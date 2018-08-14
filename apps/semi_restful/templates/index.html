@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+      .landing{
+          padding:0.5em;
+          margin:0px;
+          color:#b0bec5 ;
+      }
+      .errorbox ul{
+          margin:0px;
+          background:#eceff1 ;
+      }
+      .collapsible{
+          background: #e3f2fd 
+      }
+      body{
+          background : #F8F8F8 
+      }
+      .crud{
+          margin: 5px;
+      }
+  </style>
+</head>
+<body>
+
+<div class = "container" >
+<h1 class="landing"> Welcome! 
+    <form action="new" method="POST">
+    {% csrf_token %}
+<button class="btn waves-effect waves-light" type="submit">Create</button>
+    </form>
+ 
+</h1>
+
+<ul class="collapsible">
+  <div class="row">
+      <ul class="tabs">
+        <li class="tab col s6"><a href="#test1">Test 1</a></li>
+        <li class="tab col s6"><a href="#test2">Test 2</a></li>
+      </ul>
+    <div class="col s12">
+        <div id="test1" class="col s12">
+            <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for x in context_list%}
+                <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.first_name}}</td>
+                    <td>{{x.last_name}}</td>
+                    <td>{{x.created_d}}</td>
+                    <td>
+                        <a class = "crud" href="/users/{{x.id}}">Show</a> 
+                        <a class = "crud" href="/users/{{x.id}}/edit">Edit</a>
+                        <a class = "crud" href="/users/{{x.id}}/destroy">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>    
+    </div>
+
+<!--END TABLE TAB  -->
+        <div id="test2" class="col s12">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>                    
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{ID}</td>
+                    <td>Static Values</td>
+                    <td>For use</td>
+                    <td>Later</td>
+                    <td>
+                        <a class = "crud" href="">Show</a> 
+                        <a class = "crud" href="">Edit</a>
+                        <a class = "crud" href="">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>  
+</div>   
+<!-- END MAIN CONTAINER DIV -->
+</div>
+
+
+
+  <script type = "text/javascript"src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+</body>
+</html>

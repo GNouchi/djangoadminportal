@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+      .landing{
+          padding:0.5em;
+          margin:0px;
+          color:#b0bec5 ;
+      }
+      .errorbox ul{
+          margin:0px;
+          background:#eceff1 ;
+      }
+      .collapsible{
+          background: #e3f2fd 
+      }
+      body{
+          background : #F8F8F8 
+      }
+  </style>
+</head>
+<body>
+
+<div class = "container" >
+      <h1 class="landing"> Edit User </h1>
+      <a href="/users/{{context.context_list.id}}">Back to User Card</a>
+<ul class="collapsible">
+<!-- DROPDOWN(Edit) -->
+<li>                     
+<div class="collapsible-header active"><i class="material-icons">account_circle</i>Update User</div>
+
+<div class="collapsible-body">
+<!--inner container(Edit) -->
+<div class = "container" >
+  <form action="update" method = "POST" class="col s12">
+        {% csrf_token %}
+        <div class="row">
+        <div class="input-field col s12">
+            <input name="email" type="text" class="validate" placeholder="Email" Value = {{context_list.email}}>
+        </div>
+        <div class="input-field col s6">
+            <input name="first_name" type="text" class="validate" placeholder="First Name" Value = {{context_list.first_name}}  > 
+        </div>
+        <div class="input-field col s6">
+            <input name="last_name" type="text" class="validate" placeholder="Last Name" Value = {{context_list.last_name}}>
+        </div>
+        </div>
+      <button class="btn waves-effect waves-light" type="submit">Update</button>
+    </form>
+</div>
+<!-- END DROPDOWN CONTAINER DIV -->
+</div>
+</li>
+<!-- END COLLAPSIBLE -->
+</ul>
+<!-- END MAIN CONTAINER DIV -->
+</div>
+
+
+
+
+
+  <script type = "text/javascript"src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+</body>
+</html>

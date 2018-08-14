@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+      .landing{
+          padding:0.5em;
+          margin:0px;
+          color:#b0bec5 ;
+      }
+      .errorbox ul{
+          margin:0px;
+          background:#eceff1 ;
+      }
+      .collapsible{
+          background: #E8E8E8   ;
+      }
+  </style>
+</head>
+<body>
+
+<div class = "container" >
+      <h1 class="landing"> User Detail </h1>
+      <a href="/users/">Back to Users</a>
+
+<ul class="collapsible">
+<!-- DROPDOWN(Show) -->
+<li>                     
+<div class="collapsible-header active"><i class="material-icons">account_circle</i>User Card</div>
+
+<div class="collapsible-body">
+<!--inner container(Show) -->
+<div class = "container" >
+      <div class="row">
+        <div class="input-field col s6">
+            <label for="Create_d">Created On</label>
+            <input disabled name="Create_d" type="text" class="validate" placeholder="Create_d" Value ="{{context_list.created_d|date:'D d M Y P'}}">
+        </div>
+        <div class="input-field col s6">
+            <label for="updated_d">Last Updated</label>
+            <input disabled name="updated_d" type="text" class="validate" placeholder="" Value = "{{context_list.updated_d|date:'D d M Y P'}}">
+        </div>
+        <div class="input-field col s6">
+            <label for="first_name">First Name</label>
+            <input disabled  name="first_name" type="text" class="validate" placeholder="First Name" Value ={{context_list.first_name}} > 
+        </div>
+        <div class="input-field col s6">
+            <label for="last_name">Last Name</label>
+            <input disabled name="last_name" type="text" class="validate" placeholder="Last Name" Value ={{context_list.last_name}} >
+        </div>
+        <div class="input-field col s12">
+            <label for="email">Email</label>
+            <input disabled name="email" type="text" class="validate" placeholder="Email" Value ={{context_list.email}} >
+        </div>
+        </div>
+    <div class="row">
+    <form action="{{context_list.id}}/edit" method = "POST" class="col">
+            {% csrf_token %}
+        <button name = "edit" class="btn waves-effect light-blue lighten-1" type="submit">Edit</button>        
+    </form>
+    <form action="/users/{{context_list.id}}/destroy" method = "POST" class="col">
+        {% csrf_token %}
+        <button name = "destroy" class="btn waves-effect waves-light red lighten-2" type="submit">destroy</button>
+    </form>
+</div>
+</div>
+<!-- END DROPDOWN CONTAINER DIV -->
+</div>
+</li>
+<!-- END COLLAPSIBLE -->
+</ul>
+<!-- END MAIN CONTAINER DIV -->
+</div>
+
+
+  <script type = "text/javascript"src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+</body>
+</html>
